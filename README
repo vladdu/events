@@ -16,7 +16,7 @@ larger than its parent's, but between siblings no order is specified.
 #. A region can be destroyed. All its children will be destroyed too, recursively.
 
 #. A region can be reparented. Its z value will be adjusted accordingly and its children 
-will be affected correspondingly.
+will be affected correspondingly, keeping their relative z positions.
 
 #. Regions can move and change size in the x and y directions. This doesn't affect any 
 other regions.
@@ -24,15 +24,16 @@ other regions.
 #. Regions can move backward and forward in the z direction. All children move together 
 with it recursively, keeping their relative z positions.
 
-#. An event is a tagged non-empty set of rectangles that moves forward or backward in 
-the z direction. The direction of movement can't change. All rectangles have the same z 
-value. The event's tag defines its type.
+#. An event is a tagged non-empty set of rectangles in the XY plane (the event's area) that 
+moves forward or backward in the z direction. The direction of movement can't change. All 
+rectangles have the same z value. The event's tag defines its type. A rectangle may have 
+zero area, meaning it's just a point.
 
-#. If the intersection of the event's area  with the area of the region with the same 
+#. If the intersection of the event's area with the area of a region with the same 
 z value is not empty, we say that the event reached the region.
 
 #. A region can be made sensitive or not to a certain event type, meaning that it should 
-or should not be notified when an event of that reaches the region. 
+or should not be notified when an event of that type reaches the region. 
 
 #. A region can be made transparent or opaque to a certain event type: transparent means 
 that the event propagates unchanged after reaching the region. In the opaque case, the 
