@@ -3,13 +3,15 @@ This library manages regions and events, according to the definitions below.
 #. We have a discrete 3D space, with cartesian coordinates x, y and z. In it we define 
 two distinct kinds of entities, regions and events.
 
-#. A region is a rectangular area ((x0,y0),(x1,y1)) that also has a z value. 
+#. A region is a rectangular area ((x0,y0), (x1,y1), z). 
 
 #. No two regions have the same z value.
 
 #. Regions can be created as children of other regions. There are no requirements that the 
 children are included geometrically in the parent. A children's z value is always 
 larger than its parent's, but between siblings no order is specified.
+
+#. The z values reflect a depth-first traversal of the tree formed by the regions.
 
 #. A region can be destroyed. All its children will be destroyed too, recursively.
 
